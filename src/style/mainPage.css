@@ -1,0 +1,9 @@
+.main-page-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.page-header{
+    font-size: 2em;
+    font-weight: bold;
+}

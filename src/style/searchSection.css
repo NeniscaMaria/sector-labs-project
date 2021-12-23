@@ -1,0 +1,13 @@
+.search-section-container{
+    margin-top: 50px;
+}
+
+.form{
+    display: flex;
+    flex-direction: row;
+}
+
+.error{
+    color: red;
+    margin-top: 10px;
+}
