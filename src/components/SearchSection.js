@@ -12,6 +12,10 @@ export const SearchSection = () => {
         setUsername(e.target.value);
     }
 
+    const onKeyDown = (e) => {
+        e.key === 'Enter' && onClick();
+    }
+
     const onClick = () => {
        fetch('https://api.github.com/users/'+username+'/gists')
            .then(res => res.json())
@@ -29,9 +33,9 @@ export const SearchSection = () => {
 
     const getGistsList = () => {
         return (
-            <ul className={'gist-list'}>
+            <div className={'gist-list'}>
                 {gists.map(gist=> <Gist {...gist}/>)}
-            </ul>
+            </div>
         );
     }
 
@@ -45,12 +49,12 @@ export const SearchSection = () => {
     return (
         <div className={'search-section-container'}>
             <div className={'form'}>
-                <label className={'search-label'}>Input username:</label>
                 <input type="text" id="username-input" name="username-input"
-                       value={username} onChange={onChange}/>
-                <button onClick={onClick}>Get Public Gists</button>
+                       onKeyDown={onKeyDown}
+                       value={username} onChange={onChange} placeholder={'Search username...'}/>
+                <button className={'button'} onClick={onClick}>Get Public Gists</button>
             </div>
-            {!errorMessage.length && gists.length && getGistsList()}
+            {!errorMessage && gists && getGistsList()}
             {errorMessage && getErrorElement()}
         </div>
     );
