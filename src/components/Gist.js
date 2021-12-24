@@ -1,13 +1,22 @@
 import '../style/gist.css';
 import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {Tags} from "./Tags";
 
 export const Gist = (props) => {
     const {id, url, files} = props;
 
+    const getAccordionSummary = () => {
+        return (
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
+                <Typography className={'url'}>{url}</Typography>
+                <Tags files={files}/>
+            </AccordionSummary>);
+    }
+
     const getAccordionDetails = (filename) => {
         return (
-            <AccordionDetails>
+            <AccordionDetails key={filename}>
                 <Typography>
                     {filename}
                 </Typography>
@@ -17,10 +26,7 @@ export const Gist = (props) => {
     return (
         <div className={'gist'} key={id}>
             <Accordion className={'accordion'}>
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content" id="panel1a-header">
-                    <Typography>{url}</Typography>
-                </AccordionSummary>
+                {getAccordionSummary()}
                 {Object.entries(files).map(([key, value])=>{
                     const {filename, language, raw_url, size, type} = value;
                     return getAccordionDetails(filename);

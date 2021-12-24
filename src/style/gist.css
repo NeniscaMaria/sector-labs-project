@@ -1,3 +1,15 @@
 .gist{
     width: 70%;
 }
+
+.accordion{
+    background-color: lightcyan;
+}
+
+#panel1a-header{
+    align-items: center;
+}
+
+.url{
+    width: 100%;
+}

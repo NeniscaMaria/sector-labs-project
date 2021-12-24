@@ -1,0 +1,11 @@
+.tag-container{
+    width: auto;
+    height: auto;
+    color: white;
+    margin-top: 0;
+    white-space: nowrap;
+}
+
+.language{
+    padding: 5px;
+}

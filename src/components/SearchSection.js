@@ -30,7 +30,7 @@ export const SearchSection = () => {
     const getGistsList = () => {
         return (
             <div className={'gist-list'}>
-                {gists.map(gist=> <Gist {...gist}/>)}
+                {gists.map(gist=> <Gist {...gist} key={gist.id}/>)}
             </div>
         );
     }
