@@ -14,7 +14,7 @@ The color of each tag is computed based on the file type.
 - Forks: In the header you will also see the avatar of the last 3 users who have forked each gist.
 - Gist contents: When you expand one gist to see the files and click on one of them, the content of that file will be loaded.
 
-###Packages used:
+### Packages used:
 - mui - for icons and accordion
 - react-avatar - for the avatar functionality
 - react-loading - for loading icon
