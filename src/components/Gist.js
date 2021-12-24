@@ -2,6 +2,7 @@ import '../style/gist.css';
 import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {Tags} from "./Tags";
+import {UserAvatars} from "./UserAvatars";
 
 export const Gist = (props) => {
     const {id, url, files} = props;
@@ -10,6 +11,7 @@ export const Gist = (props) => {
         return (
             <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
                 <Typography className={'url'}>{url}</Typography>
+                <UserAvatars gistId={id}/>
                 <Tags files={files}/>
             </AccordionSummary>);
     }

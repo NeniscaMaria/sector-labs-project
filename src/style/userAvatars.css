@@ -1,0 +1,11 @@
+.avatars-container{
+    display: flex;
+    flex-direction: row;
+    margin-right: 10px;
+}
+
+.avatar{
+    border-radius: 20px;
+    max-height: 28px;
+    max-width: 28px;
+}
