@@ -1,7 +1,3 @@
-.gist{
-    width: 70%;
-}
-
 .accordion{
     background-color: lightcyan;
 }
@@ -12,4 +8,8 @@
 
 .url{
     width: 100%;
+}
+
+.details-gist{
+    user-select: none;
 }

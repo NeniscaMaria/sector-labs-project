@@ -3,6 +3,7 @@ import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@mui/ma
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {Tags} from "./Tags";
 import {UserAvatars} from "./UserAvatars";
+import {AccordionFileDetails} from "./AccordionFileDetails";
 
 export const Gist = (props) => {
     const {id, url, files} = props;
@@ -16,23 +17,14 @@ export const Gist = (props) => {
             </AccordionSummary>);
     }
 
-    const getAccordionDetails = (filename) => {
-        return (
-            <AccordionDetails key={filename}>
-                <Typography>
-                    {filename}
-                </Typography>
-            </AccordionDetails>
-        );
-    }
     return (
         <div className={'gist'} key={id}>
             <Accordion className={'accordion'}>
                 {getAccordionSummary()}
-                {Object.entries(files).map(([key, value])=>{
-                    const {filename, language, raw_url, size, type} = value;
-                    return getAccordionDetails(filename);
-                })}
+                {Object.entries(files).map(([key, {filename, raw_url, language}])=>
+                     <AccordionFileDetails key={filename} filename={filename}
+                        raw_url={raw_url} language={language.toLowerCase()}/>
+                )}
                 </Accordion>
         </div>);
 }

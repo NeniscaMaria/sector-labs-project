@@ -1,5 +1,6 @@
 .search-section-container{
     margin-top: 50px;
+    width: 100%;
 }
 
 .gist-list{
@@ -14,7 +15,7 @@
 }
 
 #username-input{
-    width: 50%;
+    width: 85%;
     padding: 12px 30px;
     height: 40px;
     margin-right: 12px;
@@ -37,6 +38,8 @@
     margin: 4px 2px;
     cursor: pointer;
     height: 40px;
+    width: 15%;
+    min-width: 200px;
 }
 
 .error{
