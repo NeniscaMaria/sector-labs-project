@@ -1,11 +1,13 @@
 import '../style/searchSection.css';
 import {useState} from "react";
 import {Gist} from "./Gist";
+import ReactLoading from "react-loading";
 
 export const SearchSection = () => {
     const [username, setUsername] = useState('');
     const [gists, setGists] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const onChange = (e) => {
         e.persist();
@@ -13,6 +15,7 @@ export const SearchSection = () => {
     }
 
     const onClick = () => {
+        setLoading(true);
        fetch('https://api.github.com/users/'+username+'/gists')
            .then(res => res.json())
            .then(data=>{
@@ -20,9 +23,11 @@ export const SearchSection = () => {
                 !message && errorMessage.length && setErrorMessage('');
                 !message && setGists(data);
                 message && setErrorMessage(message);
+                setLoading(false);
             })
            .catch(error=>{
                 setErrorMessage(error);
+                setLoading(false);
             });
 
     }
@@ -50,6 +55,7 @@ export const SearchSection = () => {
                        value={username} onChange={onChange} placeholder={'Search username...'}/>
                 <button className={'button'} onClick={onClick}>Get Public Gists</button>
             </div>
+            {loading && <ReactLoading className={'loading'} height={40} width={40} color={'#6a73d4'} type={"spinningBubbles"}/>}
             {!errorMessage && gists && getGistsList()}
             {errorMessage && getErrorElement()}
         </div>

@@ -1,5 +1,5 @@
 import '../style/gist.css';
-import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@mui/material";
+import {Accordion, AccordionSummary, Typography} from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {Tags} from "./Tags";
 import {UserAvatars} from "./UserAvatars";
