@@ -12,10 +12,6 @@ export const SearchSection = () => {
         setUsername(e.target.value);
     }
 
-    const onKeyDown = (e) => {
-        e.key === 'Enter' && onClick();
-    }
-
     const onClick = () => {
        fetch('https://api.github.com/users/'+username+'/gists')
            .then(res => res.json())
@@ -50,7 +46,7 @@ export const SearchSection = () => {
         <div className={'search-section-container'}>
             <div className={'form'}>
                 <input type="text" id="username-input" name="username-input"
-                       onKeyDown={onKeyDown}
+                       onKeyDown={(e) => {e.key === 'Enter' && onClick();}}
                        value={username} onChange={onChange} placeholder={'Search username...'}/>
                 <button className={'button'} onClick={onClick}>Get Public Gists</button>
             </div>
