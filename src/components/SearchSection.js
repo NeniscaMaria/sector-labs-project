@@ -16,16 +16,16 @@ export const SearchSection = () => {
 
     const onClick = () => {
         setLoading(true);
-       fetch('https://api.github.com/users/'+username+'/gists')
-           .then(res => res.json())
-           .then(data=>{
+        fetch('https://api.github.com/users/' + username + '/gists')
+            .then(res => res.json())
+            .then(data => {
                 const {message} = data;
                 !message && errorMessage.length && setErrorMessage('');
                 !message && setGists(data);
                 message && setErrorMessage(message);
                 setLoading(false);
             })
-           .catch(error=>{
+            .catch(error => {
                 setErrorMessage(error);
                 setLoading(false);
             });
